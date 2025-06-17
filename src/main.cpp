@@ -27,12 +27,12 @@ int main(int argc, char* argv[]) {
     std::vector<Note> detected_sequence;
     noteDetector.processFile(filename, detected_sequence, note_length);
 
-    // // Afficher la séquence detectee
-    // std::cout << "==== detected_sequence ====" << std::endl;
-    // for(size_t i = 0; i < detected_sequence.size(); ++i) {
-    //     std::cout << note_to_string(detected_sequence[i]) << " ";
-    // }
-    // std::cout << std::endl << std::endl;
+    // detected sequence
+    std::cout << "==== detected_sequence ====" << std::endl;
+    for(size_t i = 0; i < detected_sequence.size(); ++i) {
+        std::cout << note_to_string(detected_sequence[i]) << " ";
+    }
+    std::cout << std::endl << std::endl;
 
     auto note_sequence = noteDetector.get_clean_sequence(detected_sequence);
 
