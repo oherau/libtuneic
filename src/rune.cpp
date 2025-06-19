@@ -1,11 +1,11 @@
 #include "rune.h"
 
-std::string Rune::to_string(unsigned long elem) {
+Rune::Rune(unsigned long bin) : m_rune(bin)
+{}
 
-    switch(elem) {
+std::string Rune::to_string(unsigned long bin) const {
 
-
-
+    switch(bin) {
         case RUNE_VOWEL_A   :
             return "A";
         case RUNE_VOWEL_O   :
@@ -42,8 +42,6 @@ std::string Rune::to_string(unsigned long elem) {
             return "OW_S";
         case RUNE_VOWEL_AIR :
             return "AIR";
-
-
         case RUNE_CONSONANT_B :
             return "B";
         case RUNE_CONSONANT_CH:
@@ -96,8 +94,15 @@ std::string Rune::to_string(unsigned long elem) {
     return "";
 } 
 
-std::string Rune::to_string() {
+std::string Rune::to_string() const {
+    if(m_rune == RUNE_NULL)
+        return " ";
+
+    unsigned long consonant = RUNE_CONSONANT & m_rune;
+    unsigned long vowel = RUNE_VOWEL & m_rune;
+    bool reverse = RUNE_REVERSE & m_rune;
+
     if(reverse)
-        return Rune::to_string(vowel) + Rune::to_string(consonant);
-    return Rune::to_string(consonant) + Rune::to_string(vowel);
+        return std::string(Rune::to_string(vowel) + Rune::to_string(consonant));
+    return std::string(Rune::to_string(consonant) + Rune::to_string(vowel));
 }

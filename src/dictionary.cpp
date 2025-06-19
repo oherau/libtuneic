@@ -132,3 +132,13 @@ std::string Dictionary::Translate(const std::vector<Note>& notes) {
 
     return std::string(ssout.str());
 }
+
+std::string Dictionary::Translate(const std::vector<Rune>& runes) {
+
+    std::stringstream ss;
+    for(const auto& rune : runes) {
+        ss << rune.to_string();
+    }
+
+    return std::string(ss.str());
+}

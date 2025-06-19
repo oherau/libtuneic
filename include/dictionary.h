@@ -7,6 +7,7 @@
 #include <limits>
 #include <filesystem>
 #include "note.h"
+#include "rune.h"
 namespace fs = std::filesystem;
 
 class Dictionary {
@@ -17,6 +18,7 @@ public:
     bool Save(const fs::path& filePath);
     std::string Translate(const std::string& str);
     std::string Translate(const std::vector<Note>& notes);
+    std::string Translate(const std::vector<Rune>& notes);
 private:
     bool m_learning = false;
     std::map<std::string, std::string> m_hashtable;
